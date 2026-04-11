@@ -17,6 +17,7 @@ draw_path(path,x,y,false)
 draw_circle_color(target_x,target_y,5,c_green,c_green,false)
 draw_circle_color(xxxxx,yyyyy,5,c_lime,c_lime,true)
 draw_line_color(x,y,x+lengthdir_x(dist_,dir_),y+lengthdir_y(dist_,dir_),c_aqua,c_aqua)
+draw_text(x,bbox_bottom,checker)
 //draw_text(x,bbox_bottom+32,attack_stage)
 //draw_rectangle(x,y-32,x-256,y+32,true)
 //draw_text(x,y,Obj_player.position.z-position.z)
@@ -26,15 +27,4 @@ draw_line_color(x,y,x+lengthdir_x(dist_,dir_),y+lengthdir_y(dist_,dir_),c_aqua,c
 if (checked != noone)
 {
 	draw_rectangle(checked.bbox_left,checked.bbox_top,checked.bbox_right,checked.bbox_bottom,true)
-}
-
-//draw_circle(x,y,256,true)
-draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,true)
-draw_text(x,bbox_bottom+32,pushY)
-draw_text(x,bbox_bottom+64,PushHeavy)
-draw_text(x,bbox_bottom+96,StackPush)
-if (attack_stage = true)
-{
-draw_text(x,y,"Got ya")
-//draw_circle(x+target_xoffset,y+target_yoffset,5,true)
 }

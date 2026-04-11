@@ -1,3 +1,4 @@
+zaxis_collision_handler(Obj_block);
 /*var get_stuck = collision_check_zaxis(bbox_left, bbox_top, bbox_right, bbox_bottom, Obj_player)
 if (get_stuck)
 {

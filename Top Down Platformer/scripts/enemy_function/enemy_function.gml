@@ -444,7 +444,7 @@ if (exist)
 	ds_list_destroy(block_check)
 	}
 //Obj_grid Draw end
-	//checker = opener
+	checker = opener
 	Finding(griding);
 	}
 }

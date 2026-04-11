@@ -1,6 +1,6 @@
 {
   "$GMProject":"v1",
-  "%Name":"Enemy for top down platformer",
+  "%Name":"Top Down Platformer",
   "AudioGroups":[
     {"$GMAudioGroup":"v1","%Name":"audiogroup_default","exportDir":"","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
   ],
@@ -24,7 +24,7 @@
   "MetaData":{
     "IDEVersion":"2024.14.4.222",
   },
-  "name":"Enemy for top down platformer",
+  "name":"Top Down Platformer",
   "resources":[
     {"id":{"name":"Apology letter","path":"notes/Apology letter/Apology letter.yy",},},
     {"id":{"name":"i did some change tho","path":"notes/i did some change tho/i did some change tho.yy",},},
@@ -126,11 +126,11 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
-    {"roomId":{"name":"Free_room","path":"rooms/Free_room/Free_room.yy",},},
-    {"roomId":{"name":"pathfinding_test","path":"rooms/pathfinding_test/pathfinding_test.yy",},},
+    {"roomId":{"name":"room_test","path":"rooms/room_test/room_test.yy",},},
     {"roomId":{"name":"crawling_test","path":"rooms/crawling_test/crawling_test.yy",},},
     {"roomId":{"name":"jumping_test","path":"rooms/jumping_test/jumping_test.yy",},},
-    {"roomId":{"name":"room_test","path":"rooms/room_test/room_test.yy",},},
+    {"roomId":{"name":"Free_room","path":"rooms/Free_room/Free_room.yy",},},
+    {"roomId":{"name":"pathfinding_test","path":"rooms/pathfinding_test/pathfinding_test.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

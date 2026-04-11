@@ -148,7 +148,7 @@ else
 	}
 	
 }
-
+/*
 var _rad = 256
 
 if collision_check_zaxis_1(x,y,_rad,attack_target)

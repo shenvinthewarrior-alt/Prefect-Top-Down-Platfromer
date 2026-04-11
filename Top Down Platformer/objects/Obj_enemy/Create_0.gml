@@ -13,6 +13,7 @@ attack_stage = false;
 
 init_zaxis(,Zpos);
 /// create vector to handle movement in 2d
+position.z_height = 88
 motion = new Vector2();
 move_spd = 2
 flyable = 0;

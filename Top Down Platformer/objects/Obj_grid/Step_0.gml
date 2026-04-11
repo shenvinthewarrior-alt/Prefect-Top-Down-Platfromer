@@ -107,7 +107,7 @@ for (var i = 0; i < count; i++) {
             // block if enemy can't jump over
             if (enemy_top < obj_top && z_base >= inst.position.z && (coll == noone || (inst.instyyy != noone && coll != inst.instyyy) ) ) || 
 			(need_inst3 != noone && collision_rectangle(need_inst3.bbox_left-1,need_inst3.bbox_top-1,need_inst3.bbox_right+1,need_inst3.bbox_bottom+1,inst,false,true)
-			&& inst.position.z+inst.position.z_height >= Obj_enemy.position.z_ground 
+			&& inst.position.z+inst.position.z_height >= Obj_enemy.position.z_ground
 			&& inst.position.z == Obj_enemy.position.z_ground
 			&& need_inst3.position.z <= inst.position.z+inst.position.z_height
 			){

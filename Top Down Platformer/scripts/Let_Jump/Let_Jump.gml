@@ -87,27 +87,31 @@ if collision_point(target_x,target_y,Obj_Target,false,true)
 {
 point_coll = 1
 }
-
+//var inst2 = noone
 if (coll > 0) 
 {
 for (var i = 0; i < coll; ++i) {
 	var inst = dis_list2[| i];
-	var pre_move = 0;
+	var pre_move = 0//position.z;
+	if (inst && (inst.position.z+inst.position.z_height < position.z+jump_dis && inst.position.z < position.z+position.z_height))
+	{
+		pre_move = 1
+	}
 	
-	if (need_inst2 == noone || need_inst == noone) && (point_coll = 0)
+	/*if (need_inst2 == noone || need_inst == noone) && (point_coll = 0)
 	{
 		pre_move = max(target.position.z,position.z)
 	}
 	else
 	{
 		pre_move = position.z
-	}
+	}*/
 	
 	var pos_z = inst.position.z_height + inst.position.z
 	//&& inst.position.z <= position.z  //&& pos_z > position.z
 	if(pos_z <= position.z+jump_dis && pos_z > position.z 
 	//&& target.position.z_ground >= position.z
-	&& inst.position.z <= pre_move //|| (point_in_circle(x,y,disX,disY,max(4,max_spd+1)) && (pos_z == position.z_ground) && target.position.z_ground > position.z_ground)
+	&& pre_move == 1//&& inst2.position.z <= pre_move //|| (point_in_circle(x,y,disX,disY,max(4,max_spd+1)) && (pos_z == position.z_ground) && target.position.z_ground > position.z_ground)
 	//&& (point_in_circle(target_x,target_y,target.x,target.y,max(4,max_spd+1)) || point_in_circle(x,y,disX,disY,max(4,max_spd+1))
 	//)
 	&& (position.z == position.z_ground) && (position.z_speed == 0)

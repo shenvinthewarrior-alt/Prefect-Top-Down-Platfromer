@@ -19,7 +19,7 @@ if
 	(AR != noone && ((_zR >= AR.position.z+AR.position.z_height
 	&& (cdR <= 1 || (AR3 == noone || (AR3.position.z > b.position.z+b.position.z_height)))
 	&& (AR.position.z+AR.position.z_height >= b.position.z+b.position.z_height - jump_dis)
-	&& ((position.z > AR.position.z+AR.position.z_height-32 && position.z >= 32)
+	&& ((position.z > AR.position.z+AR.position.z_height-32 && position.z_ground >= 32)
 	|| (position.z >= AR.position.z+AR.position.z_height-32 && position.z < 32))
 	)
 	||(_z >= AR.position.z+AR.position.z_height && //_z <= position.z_ground+jump_dis &&
@@ -34,7 +34,7 @@ if
 	(AT != noone && ((_zT >= AT.position.z+AT.position.z_height
 	&& (cdT <= 1 || (AT3 == noone || (AT3.position.z > b.position.z+b.position.z_height)))
 	&& (AT.position.z+AT.position.z_height >= b.position.z+b.position.z_height - jump_dis)
-	&& ((position.z > AT.position.z+AT.position.z_height-32 && position.z >= 32)
+	&& ((position.z > AT.position.z+AT.position.z_height-32 && position.z_ground >= 32)
 	|| (position.z >= AT.position.z+AT.position.z_height-32 && position.z < 32))
 	)
 	||(_z >= AT.position.z+AT.position.z_height && //_z <= position.z_ground+jump_dis &&
@@ -49,7 +49,7 @@ if
 	(AD != noone && ((_zD >= AD.position.z+AD.position.z_height
 	&& (cdD <= 1 || (AD3 == noone || (AD3.position.z > b.position.z+b.position.z_height)))
 	&& (AD.position.z+AD.position.z_height >= b.position.z+b.position.z_height - jump_dis)
-	&& ((position.z > AD.position.z+AD.position.z_height-32 && position.z >= 32)
+	&& ((position.z > AD.position.z+AD.position.z_height-32 && position.z_ground >= 32)
 	|| (position.z >= AD.position.z+AD.position.z_height-32 && position.z < 32))
 	)
 	||(_z >= AD.position.z+AD.position.z_height && //_z <= position.z_ground+jump_dis &&
@@ -71,6 +71,7 @@ else
 }
 
 }
+
 
 //&& (AD.position.z+AD.position.z_height <= position.z+jump_dis)
 //&& b.position.z+b.position.z_height > position.z_ground+32+jump_dis

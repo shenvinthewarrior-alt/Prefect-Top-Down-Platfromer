@@ -10,7 +10,7 @@ function player_function(){
 	}
 	if (position.z <= -160)
 	{
-		instance_StackPushtroy()
+		instance_destroy()
 	}
 	
 	if (object_index == Obj_player)
