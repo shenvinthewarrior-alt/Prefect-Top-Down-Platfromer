@@ -17,7 +17,7 @@ draw_sprite_ext(sprite_moving,image_moving,x,bbox_bottom,image_xscale,1/*-1*/,0,
 //0.575
 y = yy;
 
-draw_text(x,bbox_bottom,motion.x * max_spd)
+draw_text(x,bbox_bottom,localFrame)
 
 /*
 var coll2 = noone

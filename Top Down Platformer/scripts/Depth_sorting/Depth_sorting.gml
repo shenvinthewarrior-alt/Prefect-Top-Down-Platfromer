@@ -7,7 +7,7 @@ var coll = noone;
 //var coll1 = noone;
 var depthering = 0;
 var depthering1 = position.z_ground;
-var _num = collision_rectangle_list(bbox_left-12 -(motion.x*max_spd), bbox_top-(motion.y*max_spd), bbox_right+12 -(motion.x*max_spd), bbox_bottom-(motion.y*max_spd), Obj_block, false, true, _list, false);
+var _num = collision_rectangle_list(bbox_left-24 -(motion.x*max_spd), bbox_top-(motion.y*max_spd), bbox_right+24 -(motion.x*max_spd), bbox_bottom-(motion.y*max_spd), Obj_block, false, true, _list, false);
 if (_num > 0)
 {
     for (var i = 0; i < _num; ++i)
@@ -35,7 +35,7 @@ var coll2 = noone
 var nearest_dist2 = 99999999999
 var depthering2 = position.z_ground;
 var listing2 = ds_list_create()
-var coll_count2 = collision_rectangle_list(bbox_left-12,bbox_top-(jump_dis+position.z_height),bbox_right+12,bbox_top,Obj_block,false,true,listing2,false)
+var coll_count2 = collision_rectangle_list(bbox_left-24,bbox_top-(jump_dis+position.z_height),bbox_right+24,bbox_top,Obj_block,false,true,listing2,false)
 if (coll_count2 > 0)
 {
 	for (var i = 0; i < coll_count2; ++i) {
