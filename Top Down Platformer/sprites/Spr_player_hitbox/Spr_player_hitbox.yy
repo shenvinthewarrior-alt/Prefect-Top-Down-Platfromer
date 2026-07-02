@@ -14,8 +14,8 @@
   "frames":[
     {"$GMSpriteFrame":"v1","%Name":"17eb11ee-0a7a-4ed9-9149-916db5c0561c","name":"17eb11ee-0a7a-4ed9-9149-916db5c0561c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
-  "gridX":0,
-  "gridY":0,
+  "gridX":20,
+  "gridY":8,
   "height":16,
   "HTile":false,
   "layers":[
@@ -23,7 +23,7 @@
   ],
   "name":"Spr_player_hitbox",
   "nineSlice":null,
-  "origin":4,
+  "origin":9,
   "parent":{
     "name":"Sprite",
     "path":"folders/Sprite.yy",

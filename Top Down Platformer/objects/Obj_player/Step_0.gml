@@ -27,28 +27,28 @@ state();
 
 //Depth_sorting(true);
 var coll = collision_rectangle(bbox_left,bbox_top-150,bbox_right,bbox_top,Obj_block,false,true)
-if (coll) && (coll.position.z+coll.position.z_height >= position.z_ground)
+if (coll) && (coll.position.z+coll.position.z_height > position.z_ground)
 {
 	var coll2 = collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+32,Obj_enemy,false,true)
-	if (!coll2)
+	if (coll2) && (coll2.position.z_ground+coll2.position.z_height > position.z_ground)
 	{
-	depth = -(bbox_bottom+position.z)
+	depth = -(bbox_bottom-(position.z_height/2)+position.z)
 	}
 	else
 	{
-	depth = -(bbox_bottom-48+position.z)
+	depth = -(bbox_bottom+position.z)
 	}
 }
 else
 {
 	var coll2 = collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+32,Obj_enemy,false,true)
-	if (!coll2)
+	if (coll2) && (coll2.position.z_ground+coll2.position.z_height > position.z_ground)
 	{
-	depth = -(bbox_bottom+position.z_ground)
+	depth = -(bbox_bottom-(position.z_height/2)+position.z_ground)
 	}
 	else
 	{
-	depth = -(bbox_bottom-48+position.z_ground)
+	depth = -(bbox_bottom+position.z_ground)
 	}
 }
 
@@ -64,7 +64,7 @@ if (motion.x != 0 || motion.y != 0)
 		anim_checker = 1
 		localFrame = 0;
 	}
-	sprite_moving = SprRetextureWalk //Spri_texture_test_walk
+	sprite_moving = Spr_walk //Spri_texture_test_walk
 
 	var car_dir = round(anim_dir/45)
 	var _total_frame = sprite_get_number(sprite_moving)/8
@@ -84,7 +84,7 @@ if (motion.x != 0 || motion.y != 0)
 		anim_checker = 3
 		localFrame = 0;
 	}
-	sprite_moving = SprRetextureRun//Spri_texture_test_run
+	sprite_moving = Spr_Run//Spri_texture_test_run
 
 	var car_dir = round(anim_dir/45)
 	var _total_frame = sprite_get_number(sprite_moving)/8
@@ -105,7 +105,7 @@ if (motion.x != 0 || motion.y != 0)
 			anim_checker = 2
 			localFrame = 0;
 		}
-		sprite_moving = SprRetextureJump //Spri_texture_test_jump
+		sprite_moving = Spr_jump //Spri_texture_test_jump
 		var car_dir = round(anim_dir/45)
 		var _total_frame = sprite_get_number(sprite_moving)/8
 		image_moving = localFrame + (car_dir*_total_frame)
@@ -136,7 +136,7 @@ else
 		anim_checker = 0
 		localFrame = 0;
 	}
-	sprite_moving = SprRetextureIdle
+	sprite_moving = Spr_idle
 	var car_dir = round(anim_dir/45)
 	var _total_frame = sprite_get_number(sprite_moving)/8
 	image_moving = localFrame + (car_dir*_total_frame)
@@ -156,7 +156,7 @@ else
 			anim_checker = 2
 			localFrame = 0;
 		}
-		sprite_moving = SprRetextureJump
+		sprite_moving = Spr_jump
 		var car_dir = round(anim_dir/45)
 		var _total_frame = sprite_get_number(sprite_moving)/8
 		image_moving = localFrame + (car_dir*_total_frame)

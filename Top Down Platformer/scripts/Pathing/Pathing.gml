@@ -42,6 +42,7 @@ else if (target.position.z_ground == position.z)
 	target_x = target.x+target_xoffset;
 	target_y = target.y+target_yoffset;
 }
+
 }
 else
 {

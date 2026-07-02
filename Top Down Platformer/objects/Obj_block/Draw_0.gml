@@ -46,7 +46,7 @@ if (coll != noone)
 
 }
 
-//draw_text(x,bbox_bottom+16,depth_buffed)
+//draw_text(x,bbox_bottom+16,depth)
 }
 else if (object_index = Obj_stair)
 {

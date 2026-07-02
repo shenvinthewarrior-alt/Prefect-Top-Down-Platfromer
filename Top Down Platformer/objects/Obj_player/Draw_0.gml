@@ -13,12 +13,12 @@ draw_sprite_ext(Spr_skin_2,image_index,x,bbox_bottom,image_xscale,(64/32)-1,0,c_
 //draw_sprite_ext(Spri_test_1,image_index,x,bbox_bottom,image_xscale,1/*-1*/,0,c_white,1)
 //draw_sprite_ext(Sprite16,image_index,x,bbox_bottom-104,image_xscale,image_yscale,0,c_white,1)
 //draw_rectangle(bbox_left+lengthdir_x(max_spd,anim_dir), bbox_top+lengthdir_y(max_spd,anim_dir), bbox_right+lengthdir_x(max_spd,anim_dir), bbox_bottom +lengthdir_y(max_spd,anim_dir),true)
-draw_sprite_ext(sprite_moving,image_moving,x,bbox_bottom,image_xscale,1/*-1*/,0,c_white,1)
+draw_sprite_ext(sprite_moving,image_moving,x,y,image_xscale,1/*-1*/,0,c_white,1)
 //0.575
 y = yy;
 
-draw_text(x,bbox_bottom,localFrame)
-
+draw_text(x,bbox_bottom,floor(localFrame))
+//draw_text(x,bbox_bottom+16,floor(localFrame))
 /*
 var coll2 = noone
 var listing2 = ds_list_create()

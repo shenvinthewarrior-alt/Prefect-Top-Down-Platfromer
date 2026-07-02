@@ -30,7 +30,7 @@ var need_inst2 = noone
 var need_inst3 = noone
 
 var make_list = ds_list_create()
-var make_space = collision_rectangle_list(bbox_left-1, bbox_top-1,bbox_right+1, bbox_bottom+1, Obj_block, false, true, make_list, false);
+var make_space = collision_rectangle_list(bbox_left-12, bbox_top-24,bbox_right+12, bbox_bottom+24, Obj_block, false, true, make_list, false);//detect wall
 var inst1 = noone
 if (make_space > 0) {
 	for (var i = 0; i < make_space; i++) {

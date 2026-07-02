@@ -21,28 +21,28 @@ state();
 
 //Depth_sorting(true);
 var coll = collision_rectangle(bbox_left,bbox_top-150,bbox_right,bbox_top,Obj_block,false,true)
-if (coll) && (coll.position.z+coll.position.z_height >= position.z_ground)
+if (coll) && (coll.position.z+coll.position.z_height > position.z_ground)
 {
 	var coll2 = collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+32,Obj_player,false,true)
-	if (!coll2)
+	if (coll2) && (coll2.position.z_ground+coll2.position.z_height > position.z_ground)
 	{
-	depth = -(bbox_bottom+position.z)
+	depth = -(bbox_bottom-(position.z_height/2)+position.z)
 	}
 	else
 	{
-	depth = -(bbox_bottom-48+position.z)
+	depth = -(bbox_bottom+position.z)
 	}
 }
 else
 {
 	var coll2 = collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+32,Obj_player,false,true)
-	if (!coll2)
+	if (coll2) && (coll2.position.z_ground+coll2.position.z_height > position.z_ground)
 	{
-	depth = -(bbox_bottom+position.z_ground)
+	depth = -(bbox_bottom-(position.z_height/2)+position.z_ground)
 	}
 	else
 	{
-	depth = -(bbox_bottom-48+position.z_ground)
+	depth = -(bbox_bottom+position.z_ground)
 	}
 }
 
