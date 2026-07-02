@@ -1,7 +1,7 @@
 if (object_index == Obj_block) || (object_index == Obj_block_pushable)
 {
 //Depth_sorting(false);
-//depth = -(bbox_top+position.z)
+depth = -(bbox_top+position.z)
 
 if (Obj_player.debug_test == true)
 {
