@@ -15,7 +15,14 @@ jump_count = 0;
 init_zaxis(/*bbox_left+12,bbox_top,bbox_right-12,bbox_bottom*/,Zpos);
 /// create vector to handle movement in 2d
 motion = new Vector2();
-move_spd = 1;
+run_spd = 4
+walk_spd = 1
+move_spd = 0;
+
+accr_xspd = 0;
+accr_yspd = 0;
+accr_xspd2 = 0;
+accr_yspd2 = 0;
 
 flyable = 0;
 fly_spd = move_spd;
@@ -29,8 +36,9 @@ state = player_state_normal;
 ladder_object = noone;
 state_timer = 0;
 dir = 0;
-position.z_height = 88//116//128-12;
+position.z_height = 32//88//116//128-12;
 
 debug_test = false;
 actual_jump = 0;
 //game_set_speed(30,gamespeed_fps)
+text = 0;

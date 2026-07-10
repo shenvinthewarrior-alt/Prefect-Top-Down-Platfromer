@@ -58,7 +58,7 @@ if (motion.x != 0 || motion.y != 0)
 		anim_checker = 1
 		localFrame = 0;
 	}
-	sprite_moving = SprRetextureWalk	
+	sprite_moving = Spr_walk	
 
 	var car_dir = round(anim_dir/45)
 	var _total_frame = sprite_get_number(sprite_moving)/8
@@ -78,7 +78,7 @@ if (motion.x != 0 || motion.y != 0)
 		anim_checker = 1
 		localFrame = 0;
 	}
-	sprite_moving = SprRetextureRun	
+	sprite_moving = Spr_Run	
 
 	var car_dir = round(anim_dir/45)
 	var _total_frame = sprite_get_number(sprite_moving)/8
@@ -99,7 +99,7 @@ if (motion.x != 0 || motion.y != 0)
 			anim_checker = 2
 			localFrame = 0;
 		}
-		sprite_moving = SprRetextureJump
+		sprite_moving = Spr_jump
 		var car_dir = round(anim_dir/45)
 		var _total_frame = sprite_get_number(sprite_moving)/8
 		image_moving = localFrame + (car_dir*_total_frame)
@@ -130,7 +130,7 @@ else
 		anim_checker = 0
 		localFrame = 0;
 	}
-	sprite_moving = SprRetextureIdle
+	sprite_moving = Spr_idle
 	var car_dir = round(anim_dir/45)
 	var _total_frame = sprite_get_number(sprite_moving)/8
 	image_moving = localFrame + (car_dir*_total_frame)
@@ -150,7 +150,7 @@ else
 			anim_checker = 2
 			localFrame = 0;
 		}
-		sprite_moving = SprRetextureJump
+		sprite_moving = Spr_jump
 		var car_dir = round(anim_dir/45)
 		var _total_frame = sprite_get_number(sprite_moving)/8
 		image_moving = localFrame + (car_dir*_total_frame)

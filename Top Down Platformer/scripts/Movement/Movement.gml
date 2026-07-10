@@ -19,17 +19,20 @@ else
 
 var move_vector = new Vector2();
 
-if(motion.length() > 0 ){
-motion.normalize();
+//if(motion.length() > 0 ){
+//motion.normalize();
 
 move_vector.x = motion.x * max_spd
 move_vector.y = motion.y * max_spd
 
 if (position.z_minimum == 0)
 {
-var collX = collision_check_zaxis(bbox_left+move_vector.x, bbox_top, bbox_right+move_vector.x, bbox_bottom, Obj_block)
-if (collX){
-	while !(collision_check_zaxis(bbox_left+sign(move_vector.x), bbox_top, bbox_right+sign(move_vector.x), bbox_bottom, Obj_block))
+if (collision_check_zaxis(bbox_left+move_vector.x, bbox_top, bbox_right+move_vector.x, bbox_bottom, Obj_block)){
+	var collX = instance_place(x+move_vector.x,y,Obj_block)
+	if (collX)
+	{
+	
+	while !(instance_place(x+sign(move_vector.x),y,Obj_block))
 	{
 		x += sign(move_vector.x)
 	}
@@ -38,10 +41,15 @@ if (collX){
 	{x = ceil(x/2)*2}
 	if ((bbox_left > collX.bbox_right) && (motion.x > 0))
 	{x = floor(x/2)*2}
+	
+	}
 }
-var collY = collision_check_zaxis(bbox_left, bbox_top+move_vector.y, bbox_right, bbox_bottom+move_vector.y, Obj_block)
-if (collY){
-	while !(collision_check_zaxis(bbox_left, bbox_top+sign(move_vector.y), bbox_right, bbox_bottom+sign(move_vector.y), Obj_block))
+if (collision_check_zaxis(bbox_left, bbox_top+move_vector.y, bbox_right, bbox_bottom+move_vector.y, Obj_block)){
+	var collY = instance_place(x,y+move_vector.y,Obj_block)
+	if (collY)
+	{
+	
+	while !(instance_place(x,y+sign(move_vector.y),Obj_block))
 	{
 		y += sign(move_vector.y)
 	}
@@ -50,6 +58,52 @@ if (collY){
 	{y = ceil(y/2)*2}
 	if ((bbox_top > collY.bbox_bottom) && (motion.y > 0))
 	{y = floor(y/2)*2}
+	
+	}
+}
+
+var pre_coll = collision_check_zaxis(bbox_left,bbox_top,bbox_right,bbox_bottom,Obj_player)
+if (pre_coll)
+{
+	var coll = instance_place(x+(motion.x*move_spd)+sign(motion.x),y+(motion.y*move_spd)+sign(motion.y),Obj_player)
+	if (coll)
+	{
+	var dir = point_direction(x,y,coll.x,coll.y)
+	x -= lengthdir_x(coll.move_spd,dir)
+	y -= lengthdir_y(coll.move_spd,dir)
+	coll.x += lengthdir_x(move_spd,dir)
+	coll.y += lengthdir_y(move_spd,dir)
+	}
+	else if instance_place(x+(motion.x*move_spd),y,Obj_player)
+	{
+		move_vector.x = 0;
+	}
+	else if instance_place(x,y+(motion.y*move_spd),Obj_player)
+	{
+	move_vector.y = 0;
+	}
+}
+
+var pre_coll1 = collision_check_zaxis(bbox_left,bbox_top,bbox_right,bbox_bottom,Obj_enemy)
+if (pre_coll1)
+{
+	var coll1 = instance_place(x+(motion.x*move_spd)+sign(motion.x),y+(motion.y*move_spd)+sign(motion.y),Obj_enemy)
+	if (coll1)
+	{
+	var dir = point_direction(x,y,coll1.x,coll1.y)
+	x -= lengthdir_x(coll1.move_spd,dir)
+	y -= lengthdir_y(coll1.move_spd,dir)
+	coll1.x += lengthdir_x(move_spd,dir)
+	coll1.y += lengthdir_y(move_spd,dir)
+	}
+	else if instance_place(x+(motion.x*move_spd),y,Obj_enemy)
+	{
+		move_vector.x = 0;
+	}
+	else if instance_place(x,y+(motion.y*move_spd),Obj_enemy)
+	{
+		move_vector.y = 0;
+	}
 }
 
 }
@@ -73,85 +127,11 @@ if !collision_rectangle(bbox_left,bbox_bottom+move_vector.y,bbox_right,bbox_bott
 }
 }
 
-var collX_other = collision_check_zaxis(bbox_left+move_vector.x, bbox_top, bbox_right+move_vector.x, bbox_bottom ,Obj_player)
-var collX_self = collision_check_zaxis(bbox_left+move_vector.x, bbox_top, bbox_right+move_vector.x, bbox_bottom ,Obj_enemy)
-if (collX_other)
-{
-_push_power = max_spd//max(max_spd,3);
-var move_success = false;
-for (var i = 0; i < abs(move_vector.x); i++) {
-	var dir = sign(move_vector.x);
-	if (character_can_move(dir, 0, _push_power-1, Obj_player)) {
-		move_success = true;
-		_push_power -= 1; // decrease push power each step
-		if (_push_power <= 0) break; // stop if no push power left
-	} else {
-		break;
-	}
-}
+x += move_vector.x
+y += move_vector.y
 
-}
-else if (collX_self)
-{
-_push_power = max_spd//max(max_spd,3);
-var move_success = false;
-for (var i = 0; i < abs(move_vector.x); i++) {
-	var dir = sign(move_vector.x);
-	if (character_can_move(dir, 0, _push_power-1, Obj_enemy)) {
-		move_success = true;
-		_push_power -= 1; // decrease push power each step
-		if (_push_power <= 0) break; // stop if no push power left
-	} else {
-		break;
-	}
-}
+//}
 
-}
-else
-{
-	x += move_vector.x
-}
-
-var collY_other = collision_check_zaxis(bbox_left, bbox_top+move_vector.y, bbox_right, bbox_bottom+move_vector.y,Obj_player)
-var collY_self = collision_check_zaxis(bbox_left, bbox_top+move_vector.y, bbox_right, bbox_bottom+move_vector.y,Obj_enemy)
-if (collY_other)
-{
-_push_power = max_spd//max(max_spd,3);
-var move_success = false;
-for (var i = 0; i < abs(move_vector.y); i++) {
-	var dir = sign(move_vector.y);
-	if (character_can_move(0, dir, _push_power-1, Obj_player)) {
-		move_success = true;
-		_push_power -= 1; // decrease push power each step
-		if (_push_power <= 0) break; // stop if no push power left
-	} else {
-		break;
-	}
-}
-
-}
-else if (collY_self)
-{
-_push_power = max_spd//max(max_spd,3);
-var move_success = false;
-for (var i = 0; i < abs(move_vector.y); i++) {
-	var dir = sign(move_vector.y);
-	if (character_can_move(0, dir, _push_power-1, Obj_enemy)) {
-		move_success = true;
-		_push_power -= 1; // decrease push power each step
-		if (_push_power <= 0) break; // stop if no push power left
-	} else {
-		break;
-	}
-}
-
-}
-else
-{
-	y += move_vector.y
-}
-
-}
 
 var exist = instance_exists(Obj_player)
 if (exist)

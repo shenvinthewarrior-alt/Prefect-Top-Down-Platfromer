@@ -93,7 +93,7 @@ if (coll > 0)
 for (var i = 0; i < coll; ++i) {
 	var inst = dis_list2[| i];
 	var pre_move = 0//position.z;
-	if (inst && (inst.position.z+inst.position.z_height < position.z+jump_dis && inst.position.z < position.z+position.z_height))
+	if (inst && (inst.position.z+inst.position.z_height < position.z+jump_dis && target.position.z_ground > position.z_ground && inst.position.z > position.z+position.z_height))
 	{
 		pre_move = 1
 	}

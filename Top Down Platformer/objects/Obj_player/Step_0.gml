@@ -1,11 +1,11 @@
 //Step
 if keyboard_check(vk_shift)
 {
-	move_spd = 4
+	move_spd = run_spd
 }
 else
 {
-	move_spd = 1
+	move_spd = walk_spd
 }
 
 if (position.z_speed == 0) && (position.z == position.z_ground)

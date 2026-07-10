@@ -22,8 +22,16 @@ function character_can_move(_vx, _vy, _push_power, Obj) {
             return false; // no push power left
         }
     } else {
-        x += _vx;
-        y += _vy;
-        return true;
+		var coll = instance_place(x+ (_vx*2),y+ (_vy*2),Obj_block)
+		if (coll)
+		{
+			return false;
+		}
+        else
+		{
+			x += _vx;
+			y += _vy;
+			return true;
+		}
     }
 }

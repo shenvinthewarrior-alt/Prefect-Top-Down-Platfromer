@@ -1,0 +1,28 @@
+var coll_PBlock = collision_check_zaxis(bbox_left+(motion.x*max_spd), bbox_top+(motion.y*max_spd), bbox_right+(motion.x*max_spd), bbox_bottom+(motion.y*max_spd), Obj_block_pushable)
+if (coll_PBlock){
+var coll_BlockX = instance_place(x+(motion.x*max_spd),y,Obj_block_pushable)
+if (coll_BlockX != noone)
+{
+	if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,Obj_block_pushable,false,true)
+	{
+		x -= lengthdir_x(16,point_direction(x,y,coll_BlockX.x,coll_BlockX.y))
+	}
+	else
+	{
+		coll_BlockX.x += motion.x*max_spd
+	}
+}
+	
+var coll_BlockY = instance_place(x,y+(motion.y*max_spd),Obj_block_pushable)
+if (coll_BlockY != noone)
+{
+	if collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,Obj_block_pushable,false,true)
+	{
+		y -= lengthdir_y(16,point_direction(x,y,coll_BlockY.x,coll_BlockY.y))
+	}
+	else
+	{
+		coll_BlockY.y += motion.y*max_spd
+	}
+}
+}

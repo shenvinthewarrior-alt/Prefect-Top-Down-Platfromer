@@ -9,6 +9,7 @@ if (object_index == Obj_block) || (object_index == Obj_block_pushable) || (objec
 {
 draw_sprite_ext(Spr_skin_1,image_index,x,bbox_bottom-(Zheight_cal-32),image_xscale,image_yscale,0,c_white,image_alpha)
 draw_sprite_ext(Spr_skin_2,image_index,x,bbox_bottom,image_xscale,(Zheight_cal/32)-1,0,c_white,image_alpha)
+draw_text(x,bbox_bottom,moveX)
 
 if (Obj_player.debug_test == true)
 {

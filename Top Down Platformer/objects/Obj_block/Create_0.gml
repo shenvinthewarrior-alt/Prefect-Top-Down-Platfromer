@@ -46,6 +46,7 @@ endZ = position.z +disZ
 
 acceleration = 0;
 acceleration2 = 0;
+_push_power = currentSpeed
 
 instyyy = noone
 vis_yscale = 0;
