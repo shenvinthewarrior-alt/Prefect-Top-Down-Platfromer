@@ -19,7 +19,6 @@ if(state_timer > 0) state_timer--;
 
 state();
 
-//Depth_sorting(true);
 var coll = collision_rectangle(bbox_left,bbox_top-150,bbox_right,bbox_top,Obj_block,false,true)
 if (coll) && (coll.position.z+coll.position.z_height > position.z_ground)
 {
@@ -172,7 +171,7 @@ else
 	}
 	
 }
-/*
+
 var _rad = 256
 
 if collision_check_zaxis_1(x,y,_rad,attack_target)

@@ -86,7 +86,7 @@ function player_function(){
 			}
 		}
 		
-		var pre_coll = collision_check_zaxis(bbox_left,bbox_top,bbox_right,bbox_bottom,Obj_player)
+		var pre_coll = collision_check_zaxis(bbox_left+(motion.x*move_spd)+sign(motion.x),bbox_top+(motion.y*move_spd)+sign(motion.y),bbox_right+(motion.x*move_spd)+sign(motion.x),bbox_bottom+(motion.y*move_spd)+sign(motion.y),Obj_player)
 		if (pre_coll)
 		{
 			var coll = instance_place(x+(motion.x*move_spd)+sign(motion.x),y+(motion.y*move_spd)+sign(motion.y),Obj_player)
@@ -104,11 +104,11 @@ function player_function(){
 			}
 			else if instance_place(x,y+(motion.y*move_spd),Obj_player)
 			{
-			move_vector.y = 0;
+				move_vector.y = 0;
 			}
 		}
 
-		var pre_coll1 = collision_check_zaxis(bbox_left,bbox_top,bbox_right,bbox_bottom,Obj_enemy)
+		var pre_coll1 = collision_check_zaxis(bbox_left+(motion.x*move_spd)+sign(motion.x),bbox_top+(motion.y*move_spd)+sign(motion.y),bbox_right+(motion.x*move_spd)+sign(motion.x),bbox_bottom+(motion.y*move_spd)+sign(motion.y),Obj_enemy)
 		if (pre_coll1)
 		{
 			var coll1 = instance_place(x+(motion.x*move_spd)+sign(motion.x),y+(motion.y*move_spd)+sign(motion.y),Obj_enemy)
