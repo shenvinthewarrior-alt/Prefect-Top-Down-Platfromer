@@ -52,7 +52,6 @@ function player_function(){
 		
 		if (position.z_minimum == 0)
 		{
-			
 		var collX = collision_check_zaxis(bbox_left+move_vector.x, bbox_top, bbox_right+move_vector.x, bbox_bottom , Obj_block)
 		if (collX){
 			while !(collision_check_zaxis(bbox_left+sign(move_vector.x), bbox_top, bbox_right+sign(move_vector.x), bbox_bottom, Obj_block))
@@ -166,7 +165,26 @@ function player_function(){
 			}
 		}
 		
-		
+		var pre_coll2 = collision_check_zaxis(bbox_left,bbox_top,bbox_right,bbox_bottom,Obj_block)
+		if (pre_coll2)
+		{
+			var coll = instance_place(x,y,Obj_block)
+			if (coll) && (position.z+position.z_height > coll.position.z)
+			{
+				var dir = point_direction(x,y,coll.x,coll.y)
+				x -= lengthdir_x(_push_power,dir)
+				y -= lengthdir_y(_push_power,dir)
+				_push_power += 1
+			}
+			else
+			{
+				_push_power = 10
+			}
+		}
+		else
+		{
+			_push_power = 10
+		}
 		
 		}
 		else if (position.z_minimum < 0) && (position.z <= 0)
@@ -216,5 +234,5 @@ function player_function(){
 		position.z_speed = (keyboard_check(vk_space) - keyboard_check(vk_shift))*fly_spd
 	}
 	
-	player_ladder_test(motion);
+	//player_ladder_test(motion);
 }

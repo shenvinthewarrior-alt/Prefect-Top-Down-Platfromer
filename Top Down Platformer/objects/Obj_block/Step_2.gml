@@ -36,13 +36,14 @@ else if (!goingToStart) {
 	alarm[0] = waitTime;
 	}
 }
+
 }
 
 acceleration = moveZ
 
 if (moveZ >= 0)
 {
-	acceleration2 = 0
+	acceleration2 = 0//currentSpeed-1
 }
 else
 {

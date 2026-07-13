@@ -29,7 +29,7 @@ accr_yspd2 = 0;
 flyable = 0;
 fly_spd = move_spd;
 max_spd = move_spd
-_push_power = max_spd;
+_push_power = 10;
 /// state machine
 jump_spd = 12
 max_jump = jump_spd*12.5
@@ -38,7 +38,7 @@ state = player_state_normal;
 ladder_object = noone;
 state_timer = 0;
 dir = 0;
-position.z_height = 32//88//116//128-12;
+position.z_height = 88//116//128-12;
 
 debug_test = false;
 actual_jump = 0;

@@ -18,6 +18,7 @@ draw_sprite_ext(sprite_moving,image_moving,x,y,image_xscale,1/*-1*/,0,c_white,1)
 //0.575
 y = yy;
 
+draw_text(x,bbox_bottom+128,_push_power)
 /*
 var coll2 = noone
 var listing2 = ds_list_create()

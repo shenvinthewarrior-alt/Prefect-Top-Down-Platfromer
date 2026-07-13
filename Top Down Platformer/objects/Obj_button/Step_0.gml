@@ -1,11 +1,20 @@
 depth = -(bbox_top+position.z)
 
-/*var coll = collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,Obj_block,false,true)
+var _num = instance_place_list(x,y,Obj_block,list,false)
 
-if (coll != noone && coll.available_choice == available_choice)
+if (_num > 0)
 {
-	position.z = coll.position.z+coll.position.z_height
-}*/
+    for (var i = 0; i < _num; ++i)
+    {
+		var coll = list[| i]
+		if (coll != noone && coll.available_choice == available_choice)
+		{
+			x += coll.moveX
+			y += coll.moveY
+			position.z = coll.position.z+coll.position.z_height+coll.moveZ
+		}
+    }
+}
 
 if instance_place(x,y,Obj_player) && (Obj_player.position.z >= position.z && Obj_player.position.z <= position.z+4)
 {

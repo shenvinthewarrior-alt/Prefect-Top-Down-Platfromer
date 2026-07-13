@@ -86,7 +86,7 @@ else if (object_index == Obj_stair)
 	depth = -bbox_bottom-(position.z*2);
 	}*/
 }
-
+/*
 var coll = instance_place(x+moveX,y+moveY,Obj_player)
 if (coll)
 {

@@ -9,6 +9,7 @@ function Position(_height=32, _z=0) constructor {
     self.floor_obj = noone;
     self.z_minimum = -_height;
     self.parent = other;
+	self.platform_motion = new Vector2();
 
     var _cx = (other.bbox_left + other.bbox_right) * 0.5;
     var _cy = (other.bbox_top + other.bbox_bottom) * 0.5;
@@ -34,7 +35,7 @@ function Position(_height=32, _z=0) constructor {
         if (self.floor_obj >= 0 && instance_exists(self.floor_obj)) {
             var _floor_pos = self.floor_obj.position;
             if (abs(self.z - _floor_pos.z_top(self)) <= self.z_step) {
-                _floor_vec = [self.floor_obj.moveX, self.floor_obj.moveY, self.floor_obj.acceleration2];
+                _floor_vec = [self.floor_obj.moveX, self.floor_obj.moveY, self.floor_obj.moveZ];
             }
         }
         return _floor_vec;
@@ -61,10 +62,18 @@ function Position(_height=32, _z=0) constructor {
             self.z_speed -= self.z_gravity;
         } else {
             self.z = max(self.z, self.z_ground);
-            var _floor_spd = self.get_floor_vector();
-            self.z_speed = max(self.z_speed, _floor_spd[2]);
+			var _floor_spd = self.get_floor_vector();
+			
+			if (_floor_spd[2] >= 1)
+			{
+				self.z_speed = 0;
+			}
+            else
+			{
+				self.z_speed = max(self.z_speed, _floor_spd[2]);
+			}
         }
-
+		
         //--- Ground/platform detection ---
         with (other) {
             var _list = ds_list_create();
@@ -77,8 +86,8 @@ function Position(_height=32, _z=0) constructor {
 
                     if (_collide != noone && variable_instance_exists(_collide, "position")) {
                         var _pos2 = _collide.position;
-                        if (other.z + other.z_step > _pos2.z_top(other)) {
-                            other.z_ground = max(other.z_ground, _pos2.z_top(other));
+                        if (other.z + other.z_step+_collide.platformSpeed > _pos2.z_top(other)) {
+                            other.z_ground = max(other.z_ground, _pos2.z_top(other)+_collide.moveZ);
                             other.floor_obj = _collide;
                         }
                     }
@@ -89,8 +98,9 @@ function Position(_height=32, _z=0) constructor {
 
         //--- Platform motion transfer ---
         var _platform_speed = self.get_floor_vector();
-        other.x += _platform_speed[0];
+		other.x += _platform_speed[0];
         other.y += _platform_speed[1];
+		other.position.z += _platform_speed[2];
     };
 }
 
