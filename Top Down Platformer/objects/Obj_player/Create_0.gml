@@ -11,6 +11,8 @@ unstckY = 0;
 pushable = 0;
 anim_dir = 0;
 jump_count = 0;
+attack = false;
+attack_coll = noone;
 /// create position struct to handle z-movement
 init_zaxis(/*bbox_left+12,bbox_top,bbox_right-12,bbox_bottom*/,Zpos);
 /// create vector to handle movement in 2d

@@ -90,47 +90,84 @@ function player_function(){
 		if (pre_coll)
 		{
 			var coll = instance_place(x+(motion.x*move_spd)+sign(motion.x),y+(motion.y*move_spd)+sign(motion.y),Obj_player)
-			if (coll)
+			var collt1 = instance_place(x+(coll.motion.x*coll.move_spd)+sign(coll.motion.x),y+(coll.motion.y*coll.move_spd)+sign(coll.motion.y),Obj_block)
+			var collt2 = instance_place(coll.x+(motion.x*move_spd)+sign(motion.x),coll.y+(motion.y*move_spd)+sign(motion.y),Obj_block)
+			if (coll) && (!collt1 && !collt2)
 			{
-			var dir = point_direction(x,y,coll.x,coll.y)
-			x -= lengthdir_x(coll.move_spd,dir)
-			y -= lengthdir_y(coll.move_spd,dir)
-			coll.x += lengthdir_x(move_spd,dir)
-			coll.y += lengthdir_y(move_spd,dir)
+				var dir = point_direction(x,y,coll.x,coll.y)
+				x -= lengthdir_x(coll.move_spd,dir)
+				y -= lengthdir_y(coll.move_spd,dir)
+				coll.x += lengthdir_x(move_spd,dir)
+				coll.y += lengthdir_y(move_spd,dir)
 			}
-			else if instance_place(x+(motion.x*move_spd),y,Obj_player)
+			else if (coll) && (collt1)
 			{
-				move_vector.x = 0;
+				var collxx = instance_place(x+(motion.x*move_spd),y,Obj_player)
+				var collyy = instance_place(x,y+(motion.y*move_spd),Obj_player)
+				if (collxx) && (collxx.move_spd > move_spd)
+				{
+					move_vector.x = 0;
+				}
+				if (collyy) && (collyy.move_spd > move_spd)
+				{
+					move_vector.y = 0;
+				}
 			}
-			else if instance_place(x,y+(motion.y*move_spd),Obj_player)
+			else
 			{
-				move_vector.y = 0;
+				if instance_place(x+(motion.x*move_spd),y,Obj_player)
+				{
+					move_vector.x = 0;
+				}
+				if instance_place(x,y+(motion.y*move_spd),Obj_player)
+				{
+					move_vector.y = 0;
+				}
 			}
 		}
 
 		var pre_coll1 = collision_check_zaxis(bbox_left+(motion.x*move_spd)+sign(motion.x),bbox_top+(motion.y*move_spd)+sign(motion.y),bbox_right+(motion.x*move_spd)+sign(motion.x),bbox_bottom+(motion.y*move_spd)+sign(motion.y),Obj_enemy)
 		if (pre_coll1)
 		{
-			var coll1 = instance_place(x+(motion.x*move_spd)+sign(motion.x),y+(motion.y*move_spd)+sign(motion.y),Obj_enemy)
-			if (coll1)
+			var coll = instance_place(x+(motion.x*move_spd)+sign(motion.x),y+(motion.y*move_spd)+sign(motion.y),Obj_enemy)
+			var collt1 = instance_place(x+(coll.motion.x*coll.move_spd)+sign(coll.motion.x),y+(coll.motion.y*coll.move_spd)+sign(coll.motion.y),Obj_block)
+			var collt2 = instance_place(coll.x+(motion.x*move_spd)+sign(motion.x),coll.y+(motion.y*move_spd)+sign(motion.y),Obj_block)
+			if (coll) && (!collt1 && !collt2)
 			{
-			var dir = point_direction(x,y,coll1.x,coll1.y)
-			x -= lengthdir_x(coll1.move_spd,dir)
-			y -= lengthdir_y(coll1.move_spd,dir)
-			coll1.x += lengthdir_x(move_spd,dir)
-			coll1.y += lengthdir_y(move_spd,dir)
+				var dir = point_direction(x,y,coll.x,coll.y)
+				x -= lengthdir_x(coll.move_spd,dir)
+				y -= lengthdir_y(coll.move_spd,dir)
+				coll.x += lengthdir_x(move_spd,dir)
+				coll.y += lengthdir_y(move_spd,dir)
 			}
-			else if instance_place(x+(motion.x*move_spd),y,Obj_enemy)
+			else if (coll) && (collt1)
 			{
-				move_vector.x = 0;
+				var collxx = instance_place(x+(motion.x*move_spd),y,Obj_enemy)
+				var collyy = instance_place(x,y+(motion.y*move_spd),Obj_enemy)
+				if (collxx) && (collxx.move_spd > move_spd)
+				{
+					move_vector.x = 0;
+				}
+				if (collyy) && (collyy.move_spd > move_spd)
+				{
+					move_vector.y = 0;
+				}
 			}
-			else if instance_place(x,y+(motion.y*move_spd),Obj_enemy)
+			else
 			{
-				move_vector.y = 0;
+				if instance_place(x+(motion.x*move_spd),y,Obj_enemy)
+				{
+					move_vector.x = 0;
+				}
+				if instance_place(x,y+(motion.y*move_spd),Obj_enemy)
+				{
+					move_vector.y = 0;
+				}
 			}
 		}
-
-			
+		
+		
+		
 		}
 		else if (position.z_minimum < 0) && (position.z <= 0)
 		{

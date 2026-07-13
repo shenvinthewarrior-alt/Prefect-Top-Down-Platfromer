@@ -5,7 +5,6 @@ var yy = y;
 draw_set_alpha(1);
 y -= position.z;
 
-draw_rectangle(bbox_left,bbox_bottom-position.z_height,bbox_right,bbox_bottom,true)
 /// draw player at Z position
 
 /*draw_sprite_ext(Spr_skin_1,image_index,x,bbox_bottom-(64-32),image_xscale,image_yscale,0,c_lime,1)
@@ -19,15 +18,6 @@ draw_sprite_ext(sprite_moving,image_moving,x,y,image_xscale,1/*-1*/,0,c_white,1)
 //0.575
 y = yy;
 
-draw_text(x,bbox_bottom,accr_xspd)
-draw_text(x,bbox_bottom+16,accr_yspd)
-
-draw_circle(
-accr_xspd2,
-
-accr_yspd2,
-
-5,true)
 /*
 var coll2 = noone
 var listing2 = ds_list_create()

@@ -52,9 +52,9 @@ if (motion.x != 0 || motion.y != 0)
 	{
 	if !(max_spd >= 0.1)
 	{
-	if (anim_checker != 1)
+	if (anim_checker != "walk")
 	{
-		anim_checker = 1
+		anim_checker = "walk"
 		localFrame = 0;
 	}
 	sprite_moving = Spr_walk	
@@ -72,9 +72,9 @@ if (motion.x != 0 || motion.y != 0)
 	
 	else
 	{
-	if (anim_checker != 1)
+	if (anim_checker != "run")
 	{
-		anim_checker = 1
+		anim_checker = "run"
 		localFrame = 0;
 	}
 	sprite_moving = Spr_Run	
@@ -93,9 +93,9 @@ if (motion.x != 0 || motion.y != 0)
 	}
 	else
 	{
-		if (anim_checker != 2)
+		if (anim_checker != "jump")
 		{
-			anim_checker = 2
+			anim_checker = "jump"
 			localFrame = 0;
 		}
 		sprite_moving = Spr_jump
@@ -124,9 +124,9 @@ else
 	if !(jump_count > 0)
 	{
 	
-	if (anim_checker != 0)
+	if (anim_checker != "idle")
 	{
-		anim_checker = 0
+		anim_checker = "idle"
 		localFrame = 0;
 	}
 	sprite_moving = Spr_idle
@@ -144,9 +144,9 @@ else
 	
 	else
 	{
-		if (anim_checker != 2)
+		if (anim_checker != "jump")
 		{
-			anim_checker = 2
+			anim_checker = "jump"
 			localFrame = 0;
 		}
 		sprite_moving = Spr_jump

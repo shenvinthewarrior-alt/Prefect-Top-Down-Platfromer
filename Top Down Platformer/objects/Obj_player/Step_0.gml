@@ -51,6 +51,9 @@ else
 	}
 }
 
+
+if (attack == false)
+{
 if (motion.x != 0 || motion.y != 0)
 {
 	anim_dir = round(point_direction(x,y,x+motion.x,y+motion.y))
@@ -58,9 +61,9 @@ if (motion.x != 0 || motion.y != 0)
 	{
 	if /*(max_spd < 2) ||*/ (!keyboard_check(vk_shift))
 	{
-	if (anim_checker != 1)
+	if (anim_checker != "walk")
 	{
-		anim_checker = 1
+		anim_checker = "walk"
 		localFrame = 0;
 	}
 	sprite_moving = Spr_walk //Spri_texture_test_walk
@@ -78,9 +81,9 @@ if (motion.x != 0 || motion.y != 0)
 	
 	else
 	{
-	if (anim_checker != 3)
+	if (anim_checker != "run")
 	{
-		anim_checker = 3
+		anim_checker = "run"
 		localFrame = 0;
 	}
 	sprite_moving = Spr_Run//Spri_texture_test_run
@@ -99,9 +102,9 @@ if (motion.x != 0 || motion.y != 0)
 	}
 	else
 	{
-		if (anim_checker != 2)
+		if (anim_checker != "jump")
 		{
-			anim_checker = 2
+			anim_checker = "jump"
 			localFrame = 0;
 		}
 		sprite_moving = Spr_jump //Spri_texture_test_jump
@@ -130,9 +133,9 @@ else
 	if !(jump_count > 0)
 	{
 	
-	if (anim_checker != 0)
+	if (anim_checker != "idle")
 	{
-		anim_checker = 0
+		anim_checker = "idle"
 		localFrame = 0;
 	}
 	sprite_moving = Spr_idle
@@ -150,9 +153,9 @@ else
 	
 	else
 	{
-		if (anim_checker != 2)
+		if (anim_checker != "jump")
 		{
-			anim_checker = 2
+			anim_checker = "jump"
 			localFrame = 0;
 		}
 		sprite_moving = Spr_jump
@@ -177,15 +180,41 @@ else
 	}
 	
 }
-
-
-if keyboard_check_pressed(ord("L"))
+}
+else
 {
-	var hitter = instance_create_depth(x,y,depth,Obj_hitbox)
-	hitter.image_index = round(anim_dir/45)
+	if (anim_checker != "cross punch")
+	{
+		anim_checker = "cross punch"
+		localFrame = 0;
+	}
+	sprite_moving = Spr_Cross_punch //Spri_texture_test_walk
+
+	var car_dir = round(anim_dir/45)
+	var _total_frame = sprite_get_number(sprite_moving)/8
+	image_moving = localFrame + (car_dir*_total_frame)
+	localFrame += sprite_get_speed(sprite_moving)/60
+	
+	if (localFrame >= _total_frame)
+	{
+		attack = false
+	}
+	
+	if (localFrame == 5) && (attack_coll == noone)
+	{
+		var atk = instance_create_depth(x,y,depth,Obj_hitbox)
+		atk.alarm[0] = 1
+		attack_coll = atk.id
+	}
 }
 
-if keyboard_check_pressed(ord("R"))
+if keyboard_check_pressed(ord("L")) && (attack == false)
 {
-	instance_create_depth(room_width-16,y,depth,Obj_enemy)
+	attack = true
 }
+
+	
+if (attack_coll != noone) {
+	if instance_exists(attack_coll) {attack_coll.x = x+(motion.x*max_spd); attack_coll.y = y+(motion.y*max_spd); attack_coll.image_index = round(anim_dir/45);}
+	else {attack_coll = noone}
+};
