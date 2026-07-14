@@ -1,4 +1,4 @@
-if (debug_test == false)
+/*if (debug_test == false)
 {
 	debug_test = true
 }

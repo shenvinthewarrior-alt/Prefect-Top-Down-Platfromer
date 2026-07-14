@@ -20,6 +20,7 @@ But i'm trying my best not to use AI, it's was a embarrassment to me to use it.
 [      AI code list, (embarrassment list)      ]
 [ 1: Obj_grid.create (ALL)                     ]
 [ 2: Obj_grid.Step (4 to 63)                   ]
+[ 3: Obj_player_control.AllUpdate              ]
 
 Even Tho some of the codes are "hard coded" that's completely irrelevant to AI's,
 if the AI's codes exist in my game's codes, it'll be included.

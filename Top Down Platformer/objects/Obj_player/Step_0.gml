@@ -1,5 +1,5 @@
 //Step
-if keyboard_check(vk_shift)
+if keyboard_check(Obj_player_control.key[Action.RUN])
 {
 	move_spd = run_spd
 }
@@ -208,7 +208,7 @@ else
 	}
 }
 
-if keyboard_check_pressed(ord("L")) && (attack == false)
+if keyboard_check_pressed(Obj_player_control.key[Action.CROSS_PUNCH]) && (attack == false)
 {
 	attack = true
 }

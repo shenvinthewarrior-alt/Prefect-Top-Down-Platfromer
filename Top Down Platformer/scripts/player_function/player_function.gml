@@ -13,16 +13,9 @@ function player_function(){
 		instance_destroy()
 	}
 	
-	if (object_index == Obj_player)
-	{
-	motion.x = keyboard_check(ord("D")) - keyboard_check(ord("A"));
-	motion.y = keyboard_check(ord("S")) - keyboard_check(ord("W"));
-	}
-	else
-	{
-	motion.x = keyboard_check(vk_right) - keyboard_check(vk_left);
-	motion.y = keyboard_check(vk_down) - keyboard_check(vk_up);
-	}
+	motion.x = keyboard_check(Obj_player_control.key[Action.GO_RIGHT]) - keyboard_check(Obj_player_control.key[Action.GO_LEFT]);
+	motion.y = keyboard_check(Obj_player_control.key[Action.GO_DOWN]) - keyboard_check(Obj_player_control.key[Action.GO_UP]);
+
 	max_spd = move_spd
 	
 	if (flyable == 0)
@@ -216,7 +209,7 @@ function player_function(){
 		if(abs(position.z - position.z_ground) < position.z_step)
 		{jump_count = 0;}
 	
-		if (keyboard_check_pressed(vk_space) && jump_count < 1)
+		if (keyboard_check_pressed(Obj_player_control.key[Action.JUMP]) && jump_count < 1)
 		{jump_count += 1;
 		/*if !(jump_count > 1){*/
 		position.z_speed = jump_spd;
@@ -234,5 +227,5 @@ function player_function(){
 		position.z_speed = (keyboard_check(vk_space) - keyboard_check(vk_shift))*fly_spd
 	}
 	
-	//player_ladder_test(motion);
+	player_ladder_test(motion);
 }
