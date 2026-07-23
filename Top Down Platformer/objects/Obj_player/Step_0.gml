@@ -25,31 +25,56 @@ if(state_timer > 0) state_timer--;
 
 state();
 
-var coll = collision_rectangle(bbox_left,bbox_top-150,bbox_right,bbox_top,Obj_block,false,true)
-if (coll) && (coll.position.z+coll.position.z_height > position.z_ground)
+var list = ds_list_create()
+var _num = instance_place_list(x,y,Obj_block,list,false)
+var cal_depth = 0;
+var cal_depth1 = 1;
+var cal_height = 0;
+if (_num > 0)
 {
-	var coll2 = collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+32,Obj_enemy,false,true)
-	if (coll2) && (coll2.position.z_ground+coll2.position.z_height > position.z_ground)
-	{
-	depth = -(bbox_bottom-(position.z_height/2)+position.z)
-	}
-	else
-	{
-	depth = -(bbox_bottom+position.z)
-	}
+    for (var i = 0; i < _num; ++i)
+    {
+		var coll = list[| i]
+		if (coll != noone) && (coll.position.z+coll.position.z_height == position.z_ground)
+		{
+			cal_depth = coll.bbox_bottom+64
+			cal_depth1 = coll.image_yscale;
+			cal_height = (coll.position.z_height*(coll.bbox_top/64))
+		}
+    }
 }
-else
+ds_list_destroy(list)
+
+var cal_height1 = 0;
+
+var list2 = ds_list_create()
+var _num2 = collision_rectangle_list(bbox_left,bbox_top-150,bbox_right,bbox_top,Obj_block,false,true,list2,false)
+if (_num2 > 0)
 {
-	var coll2 = collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+32,Obj_enemy,false,true)
-	if (coll2) && (coll2.position.z_ground+coll2.position.z_height > position.z_ground)
-	{
-	depth = -(bbox_bottom-(position.z_height/2)+position.z_ground)
-	}
-	else
-	{
-	depth = -(bbox_bottom+position.z_ground)
-	}
+    for (var i = 0; i < _num2; ++i)
+    {
+		var coll = list2[| i]
+		if (coll != noone)
+		{
+			
+			if (coll.position.z+coll.position.z_height > position.z_ground) && (!instance_place(x,y,coll))
+			{
+			cal_height1 = (coll.bbox_bottom+64)+(coll.position.z_height*(coll.bbox_top/48))//+((coll.position.z_height+coll.position.z) *(coll.bbox_bottom/48))
+			}
+		}
+    }
 }
+ds_list_destroy(list2)
+
+depth = -(bbox_top+cal_depth+cal_height1+cal_height+(position.z*cal_depth1) )
+
+
+
+
+
+
+
+
 
 
 if (attack == false)
@@ -215,6 +240,6 @@ if keyboard_check_pressed(Obj_player_control.key[Action.CROSS_PUNCH]) && (attack
 
 	
 if (attack_coll != noone) {
-	if instance_exists(attack_coll) {attack_coll.x = x+(motion.x*max_spd); attack_coll.y = y+(motion.y*max_spd); attack_coll.image_index = round(anim_dir/45);}
+	if instance_exists(attack_coll) {attack_coll.x = x+(motion.x*max_spd); attack_coll.y = y+(motion.y*max_spd); attack_coll.position.z = 56+position.z+position.z_speed; attack_coll.image_index = round(anim_dir/45);}
 	else {attack_coll = noone}
 };

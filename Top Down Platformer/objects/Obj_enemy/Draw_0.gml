@@ -8,7 +8,7 @@ y -= position.z;
 //draw_sprite_ext(Spr_skin_2,image_index,x,bbox_bottom,image_xscale,(64/32)-1,0,c_maroon,1)
 draw_sprite_ext(sprite_moving,image_moving,x,y,1,1/*-1*/,0,c_white,1)
 y = yy;
-//draw_text(x,bbox_bottom,jump_count)
+draw_text(x+123,bbox_bottom,depth)
 //////
 if (Obj_player.debug_test = true)
 {

@@ -1,3 +1,4 @@
+
 if (disX != 0) || (disY != 0) || (disZ != 0)
 {
 var _targetX = endX, _targetY = endY, _targetZ = endZ;

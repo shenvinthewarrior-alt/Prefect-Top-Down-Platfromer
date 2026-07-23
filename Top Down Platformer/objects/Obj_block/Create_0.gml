@@ -1,8 +1,4 @@
 image_speed = 0;
-//CCC = 0;
-//hitted = 1;
-depther = 0;
-depth_buffed = 0;
 jump_dis = 0;
 Zheight_cal = Zheight+32
 if (object_index != Obj_stair)
@@ -28,13 +24,13 @@ currentSpeed = 1;
 moveX = 0;
 moveY = 0;
 moveZ = 0;
-pushX = 0;
-pushY = 0;
-StackPush = 0;
-add_stack = 1;
 
-goingToStart = false;
-waitTime = 60;
+activate = 0;
+depther = 0;
+
+goingToStart = true;
+Cooldown = 1;
+waitTime = 1;
 
 startX = x
 startY = y
@@ -43,10 +39,6 @@ startZ = position.z
 endX = x + disX
 endY = y + disY
 endZ = position.z +disZ
-
-acceleration = 0;
-acceleration2 = 0;
-_push_power = currentSpeed
 
 instyyy = noone
 vis_yscale = 0;

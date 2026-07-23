@@ -1,9 +1,9 @@
-function collision_check_zaxis(_xto, _yto, _xto2 , _yto2, _targets, _get_obj=false) {
+function collision_check_zaxis_2(_xto, _yto, _targets, _get_obj=false) {
     
     /// Create a temporary list to store detected collision instances.
     var _list = ds_list_create();
     /// Check for collision at the given (x, y) coordinates with specified targets.
-    if (collision_rectangle_list(_xto, _yto, _xto2, _yto2, _targets,1,1, _list, 0)) {
+    if (instance_place_list(_xto, _yto, _targets, _list, 0)) {
 
         /// Loop through all detected collisions.
         for (var _i = 0; _i < ds_list_size(_list); _i++) {
@@ -51,4 +51,3 @@ function collision_check_zaxis(_xto, _yto, _xto2 , _yto2, _targets, _get_obj=fal
     }
     return false;
 }
-
